@@ -24,6 +24,12 @@ resource "aws_iam_role_policy_attachment" "terraform-eks-cluster-AmazonEKSCluste
   role       = aws_iam_role.terraform-eks-cluster.name
 }
 
+resource "aws_iam_role_policy_attachment" "terraform-eks-cluster-AmazonEKSVPCResourceController" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
+  role       = aws_iam_role.terraform-eks-cluster.name
+}
+
+
 #EKS Node role & Policy
 resource "aws_iam_role" "terraform-eks-node" {
   name = "terraform-eks-node"

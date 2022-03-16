@@ -8,15 +8,15 @@ data "terraform_remote_state" "vpc" {
      }
 }
 
-# data "terraform_remote_state" "iam" {
+data "terraform_remote_state" "iam" {
 
-#     backend = "s3"
-#     config = {
-#         bucket         = "jbytftests3-apnortheast2-tfstate"
-#         key            = "making_eks/iam/terraform.tfstate"
-#         region         = "ap-northeast-2"
-#      }
-# }
+    backend = "s3"
+    config = {
+        bucket         = "jbytftests3-apnortheast2-tfstate"
+        key            = "making_eks/iam/terraform.tfstate"
+        region         = "ap-northeast-2"
+     }
+}
 
 # data "terraform_remote_state" "eks" {
 
