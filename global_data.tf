@@ -1,12 +1,12 @@
-# data "terraform_remote_state" "vpc" {
+data "terraform_remote_state" "vpc" {
 
-#     backend = "s3"
-#     config = {
-#         bucket         = "jbytftests3-apnortheast2-tfstate"
-#         key            = "making_eks/vpc/terraform.tfstate"
-#         region         = "ap-northeast-2"
-#      }
-# }
+    backend = "s3"
+    config = {
+        bucket         = "jbytftests3-apnortheast2-tfstate"
+        key            = "making_eks/vpc/terraform.tfstate"
+        region         = "ap-northeast-2"
+     }
+}
 
 # data "terraform_remote_state" "iam" {
 
