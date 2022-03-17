@@ -1,0 +1,10 @@
+# data.terraform_remote_state.vpc:
+data "terraform_remote_state" "vpc" {
+    [1m[0mbackend[0m[0m = "s3"
+    [1m[0mconfig[0m[0m  = {
+        bucket = "jbytftests3-apnortheast2-tfstate"
+        key    = "making_eks/vpc/terraform.tfstate"
+        region = "ap-northeast-2"
+    }
+    [1m[0moutputs[0m[0m = {}
+}[0m[0m

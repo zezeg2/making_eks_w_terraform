@@ -1,0 +1,99 @@
+# data.terraform_remote_state.iam:
+data "terraform_remote_state" "iam" {
+    [1m[0mbackend[0m[0m = "s3"
+    [1m[0mconfig[0m[0m  = {
+        bucket = "jbytftests3-apnortheast2-tfstate"
+        key    = "making_eks/iam/terraform.tfstate"
+        region = "ap-northeast-2"
+    }
+    [1m[0moutputs[0m[0m = {
+        eks_cluster_policy_attatch1 = {
+            id         = "terraform-eks-cluster-20220316112406399400000004"
+            policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+            role       = "terraform-eks-cluster"
+        }
+        eks_cluster_policy_attatch2 = {
+            id         = "terraform-eks-cluster-20220316122008551200000001"
+            policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
+            role       = "terraform-eks-cluster"
+        }
+        eks_cluster_role            = {
+            arn                   = "arn:aws:iam::961990992131:role/terraform-eks-cluster"
+            assume_role_policy    = jsonencode(
+                {
+                    Statement = [
+                        {
+                            Action    = "sts:AssumeRole"
+                            Effect    = "Allow"
+                            Principal = {
+                                Service = "eks.amazonaws.com"
+                            }
+                        },
+                    ]
+                    Version   = "2012-10-17"
+                }
+            )
+            create_date           = "2022-03-16T11:24:05Z"
+            description           = ""
+            force_detach_policies = false
+            id                    = "terraform-eks-cluster"
+            inline_policy         = [
+                {
+                    name   = ""
+                    policy = ""
+                },
+            ]
+            managed_policy_arns   = [
+                "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+            ]
+            max_session_duration  = 3600
+            name                  = "terraform-eks-cluster"
+            name_prefix           = ""
+            path                  = "/"
+            permissions_boundary  = [90mnull[0m[0m
+            tags                  = {}
+            tags_all              = {}
+            unique_id             = "AROA576ZBUEBTPIZAHIIK"
+        }
+        eks_node_role               = {
+            arn                   = "arn:aws:iam::961990992131:role/terraform-eks-node"
+            assume_role_policy    = jsonencode(
+                {
+                    Statement = [
+                        {
+                            Action    = "sts:AssumeRole"
+                            Effect    = "Allow"
+                            Principal = {
+                                Service = "ec2.amazonaws.com"
+                            }
+                        },
+                    ]
+                    Version   = "2012-10-17"
+                }
+            )
+            create_date           = "2022-03-16T11:24:05Z"
+            description           = ""
+            force_detach_policies = false
+            id                    = "terraform-eks-node"
+            inline_policy         = [
+                {
+                    name   = ""
+                    policy = ""
+                },
+            ]
+            managed_policy_arns   = [
+                "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+                "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+                "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
+            ]
+            max_session_duration  = 3600
+            name                  = "terraform-eks-node"
+            name_prefix           = ""
+            path                  = "/"
+            permissions_boundary  = [90mnull[0m[0m
+            tags                  = {}
+            tags_all              = {}
+            unique_id             = "AROA576ZBUEBQSNIN7TTC"
+        }
+    }
+}[0m[0m

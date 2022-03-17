@@ -17,3 +17,8 @@ output "vpc_private_subnets_arn" {
   description = "IDs of the VPC's private subnets"
   value       = module.vpc.private_subnet_arns
 }
+
+output "aws_security_group_eks"{
+  description = "aws security group for eks"
+  value = module.security-group.security_group_id
+}

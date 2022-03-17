@@ -3,7 +3,6 @@
 #     type        = string
 #     default     = "example-vpc"
 # }
-
 variable "vpc_cidr" {
     description = "CIDR block for VPC"
     type        = string
@@ -46,7 +45,7 @@ variable "vpc_tags" {
     default = {
         Terraform   = "true"
         Environment = "dev"
-        "kubernetes.io/cluster/${var.cluster-name}" = "shared"
+        "kubernetes.io/cluster/default_cluster" = "shared"
     }
 }
 

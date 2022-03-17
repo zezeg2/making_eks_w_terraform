@@ -1,3 +1,11 @@
+data "http" "workstation-external-ip" {
+  url = "http://ipv4.icanhazip.com"
+}
+
+locals {
+  workstation-external-cidr = "${chomp(data.http.workstation-external-ip.body)}/32"
+}
+
 module "security-group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.9.0"
@@ -11,7 +19,7 @@ module "security-group" {
       to_port     = 443                                #인바운드 끝나는 포트
       protocol    = "tcp"                              #사용할 프로토콜
       description = "https"                            #설명
-      cidr_blocks = "0.0.0.0/0"                        #허용할 IP 범위
+      cidr_blocks = local.workstation-external-cidr                        #허용할 IP 범위
     },
     {
       from_port   = 80
